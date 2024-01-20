@@ -3,11 +3,12 @@ const app = express();
 const mongoose = require("mongoose");
 app.use(express.json());
 const cors = require("cors");
+require ('dotenv/config');
 app.use(cors());
 app.use("/files", express.static("files"));
 //mongodb connection----------------------------------------------
-const mongoUrl =
-  "mongodb+srv://adarsh:adarsh@cluster0.zllye.mongodb.net/?retryWrites=true&w=majority";
+const mongoUrl = process.env.URI;
+  
 
 mongoose
   .connect(mongoUrl, {
